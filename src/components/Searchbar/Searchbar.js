@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import { CiSearch } from 'react-icons/ci';
 import {
   SearchbarHeader,
@@ -12,6 +13,7 @@ const Searchbar = ({ onSubmit }) => {
 
   const handelTagNameChange = e => {
     setTagName(e.currentTarget.value.toLowerCase());
+    
   };
 
   const handelSubmit = e => {
@@ -44,6 +46,10 @@ const Searchbar = ({ onSubmit }) => {
     </SearchbarHeader>
   );
 };
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+}
 export default Searchbar;
 
 

@@ -5,7 +5,7 @@ import { Overlay, ModalWindow } from './Modal.styled';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const Modal = ({ onClose, modalUrl,searchQuery }) => {
+const Modal = ({ onClose, children }) => {
   useEffect(() => {
     const handleKeyDown = e => {
       console.log(e.code);
@@ -27,13 +27,14 @@ const Modal = ({ onClose, modalUrl,searchQuery }) => {
 
   return createPortal(
     <Overlay onClick={handelBackdropClick}>
-      <ModalWindow> <img src={modalUrl} alt={searchQuery} width="600" /></ModalWindow>
+      <ModalWindow> {children}</ModalWindow>
     </Overlay>,
     modalRoot
   );
 };
 Modal.propTypes = {
   onClose: PropTypes.func.isRequired,
+  children: PropTypes.object.isRequired,
 };
 
 export default Modal;
